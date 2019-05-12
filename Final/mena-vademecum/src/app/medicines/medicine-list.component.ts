@@ -1,15 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { IMedicine } from './medicine';
 @Component({
   selector: 'app-medicines',
-  templateUrl: './medicine-list-component.html'
+  templateUrl: './medicine-list-component.html',
+  styleUrls: ['./medicine-list.component.css']
 })
-export class MedicineListComponent {
+export class MedicineListComponent implements OnInit {
   pageTitle: string = 'Medicine List';
   imageWidth: number = 50;
   imageMargin: number = 50;
   showImage: boolean = false;
-  listFilter: string = 'medicine';
-  medicines: any[] = [
+
+  _listFilter = '';
+  get listFilter(): string {
+    return this._listFilter;
+  }
+  set listFilter(value: string) {
+    this._listFilter = value;
+    this.filteredMedicines = this.listFilter ? this.performFilter(this.listFilter) : this.medicines;
+  }
+
+  filteredMedicines: IMedicine[] = [];
+
+  medicines: IMedicine[] = [
     {
       medicineId: 1,
       medicineName: 'Gibiter',
@@ -33,7 +46,22 @@ export class MedicineListComponent {
     }
   ];
 
+  constructor(){
+    this.filteredMedicines = this.medicines;
+    this.listFilter = '	Gi';
+  }
+
+  ngOnInit(): void {
+   console.log('on init on medicine List Component');
+  }
+
   toggleImage(): void {
     this.showImage = !this.showImage;
+  }
+
+  performFilter(filterBy: string): IMedicine[] {
+    filterBy = filterBy.toLocaleLowerCase();
+    return this.medicines.filter((product: IMedicine) =>
+      product.medicineName.toLocaleLowerCase().indexOf(filterBy) !== -1);
   }
 }

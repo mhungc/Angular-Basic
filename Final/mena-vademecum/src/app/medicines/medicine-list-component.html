@@ -31,7 +31,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let medicine of medicines">
+          <tr *ngFor="let medicine of filteredMedicines">
             <td>
               <img
                 *ngIf="showImage"
@@ -45,7 +45,7 @@
               {{ medicine.medicineName }}
             </td>
             <td>
-              {{ medicine.medicineCode | lowercase }}
+              {{ medicine.medicineCode | lowercase | convertToSpaces: '-' }}
             </td>
             <td>{{ medicine.releaseDate }}</td>
             <td>{{ medicine.price | currency:'USD':'symbol':'1.2-2'}}</td>
