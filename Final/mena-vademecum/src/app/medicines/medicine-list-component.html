@@ -45,10 +45,10 @@
               {{ medicine.medicineName }}
             </td>
             <td>
-              {{ medicine.medicineCode }}
+              {{ medicine.medicineCode | lowercase }}
             </td>
             <td>{{ medicine.releaseDate }}</td>
-            <td>{{ medicine.price }}</td>
+            <td>{{ medicine.price | currency:'USD':'symbol':'1.2-2'}}</td>
             <td>{{ medicine.starRating }}</td>
           </tr>
         </tbody>
