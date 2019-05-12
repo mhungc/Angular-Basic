@@ -15,8 +15,8 @@
         <thead>
           <tr>
             <th>
-              <button class="btn btn-primary">
-                ShowImage
+              <button class="btn btn-primary" (click)='toggleImage()'>
+                {{showImage? 'Show': 'Hide'}} Image
               </button>
             </th>
             <th>Medicine Name</th>
@@ -28,7 +28,13 @@
         </thead>
         <tbody>
           <tr *ngFor="let medicine of medicines">
-            <td></td>
+            <td>
+              <img *ngIf='showImage'
+              [src]='medicine.imageUrl'
+              [title]='medicine.medicineName'
+              [style.width.px]='imageWidth'
+              [style.margin.px]='imageMargin'>
+            </td>
             <td>
                 {{ medicine.medicineName }}
                </td>
