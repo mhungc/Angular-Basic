@@ -8,6 +8,7 @@ export class MedicineListComponent {
   imageWidth: number = 50;
   imageMargin: number = 50;
   showImage: boolean = false;
+  listFilter: string = 'medicine';
   medicines: any[] = [
     {
       medicineId: 1,
