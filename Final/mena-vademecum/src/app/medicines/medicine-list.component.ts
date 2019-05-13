@@ -48,7 +48,7 @@ export class MedicineListComponent implements OnInit {
 
   constructor(){
     this.filteredMedicines = this.medicines;
-    this.listFilter = '	Gi';
+    this.listFilter = '';
   }
 
   ngOnInit(): void {
