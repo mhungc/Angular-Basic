@@ -8,6 +8,8 @@ import { ConvertToSpacesPipe } from './shared/convert-to-spaces.pipe';
 import { StarComponent } from './shared/star.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MedicineDetailComponent } from './medicines/medicine-detail.component';
+import { RouterModule } from '@angular/router';
+import { WelcomeComponent } from './home/welcome.component';
 
 @NgModule({
   declarations: [
@@ -15,12 +17,20 @@ import { MedicineDetailComponent } from './medicines/medicine-detail.component';
     MedicineListComponent,
     ConvertToSpacesPipe,
     StarComponent,
-    MedicineDetailComponent
+    MedicineDetailComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot([
+      { path: 'medicines', component: MedicineListComponent },
+      { path: 'medicines/:id', component: MedicineDetailComponent },
+      { path: 'welcome', component: WelcomeComponent },
+      { path: '', redirectTo: 'welcome', pathMatch: 'full' },
+      { path: '**', redirectTo: 'welcome', pathMatch: 'full' }
+    ]),
   ],
   providers: [],
   bootstrap: [AppComponent]

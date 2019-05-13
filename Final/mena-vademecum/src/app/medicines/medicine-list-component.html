@@ -42,7 +42,10 @@
               />
             </td>
             <td>
-              {{ medicine.medicineName }}
+              <a [routerLink]="['/medicines',medicine.medicineId]">
+                {{ medicine.medicineName }}
+              </a>
+
             </td>
             <td>
               {{ medicine.medicineCode | lowercase | convertToSpaces: '-' }}

@@ -3,7 +3,6 @@ import { IMedicine } from "./medicine";
 import { MedicineService } from "./medicine.service";
 
 @Component({
-  selector: "app-medicines",
   templateUrl: "./medicine-list-component.html",
   styleUrls: ["./medicine-list.component.css"]
 })
@@ -59,4 +58,6 @@ export class MedicineListComponent implements OnInit {
   onRatingClicked(message: string): void {
     this.pageTitle = "Medicine List: " + message;
   }
+
+
 }
