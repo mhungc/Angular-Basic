@@ -1,0 +1,46 @@
+<div class="card">
+  <div class="card-header">
+    {{ pageTitle }}
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-2">Filter by:</div>
+      <div class="col-md-4">
+        <input type="text" />
+      </div>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table" *ngIf="medicines && medicines.length">
+        <thead>
+          <tr>
+            <th>
+              <button class="btn btn-primary">
+                ShowImage
+              </button>
+            </th>
+            <th>Medicine Name</th>
+            <th>Code</th>
+            <th>Available</th>
+            <th>Price</th>
+            <th>5 Star Rating</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let medicine of medicines">
+            <td></td>
+            <td>
+                {{ medicine.medicineName }}
+               </td>
+            <td>
+              {{ medicine.medicineCode }}
+            </td>
+            <td>{{ medicine.releaseDate }}</td>
+            <td>{{ medicine.price}}</td>
+            <td>{{medicine.starRating}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
