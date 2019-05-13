@@ -7,13 +7,15 @@ import { MedicineListComponent } from './medicines/medicine-list.component';
 import { ConvertToSpacesPipe } from './shared/convert-to-spaces.pipe';
 import { StarComponent } from './shared/star.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MedicineDetailComponent } from './medicines/medicine-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MedicineListComponent,
     ConvertToSpacesPipe,
-    StarComponent
+    StarComponent,
+    MedicineDetailComponent
   ],
   imports: [
     BrowserModule,
