@@ -64,4 +64,8 @@ export class MedicineListComponent implements OnInit {
     return this.medicines.filter((product: IMedicine) =>
       product.medicineName.toLocaleLowerCase().indexOf(filterBy) !== -1);
   }
+
+  onRatingClicked(message: string): void {
+    this.pageTitle = 'Medicine List: ' + message;
+  }
 }
