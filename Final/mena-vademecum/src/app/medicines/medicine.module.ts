@@ -15,8 +15,7 @@ import { SharedModule } from '../shared/shared.module';
     ConvertToSpacesPipe
   ],
   imports: [
-    CommonModule,
-    FormsModule,
+
     RouterModule.forChild([
       { path: 'medicines', component: MedicineListComponent },
       { path: 'medicines/:id', component: MedicineDetailComponent }
