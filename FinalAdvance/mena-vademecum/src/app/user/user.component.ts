@@ -16,12 +16,17 @@ export class UserComponent implements OnInit {
 
   ngOnInit() {
 
-     this.userForm  = new FormGroup({
-      firstName: new FormControl(''),
-      lastName: new FormControl(''),
-      email: new FormControl('')
+     this.userForm  = this.fb.group({
+      firstName: [''],
+      lastName: [''],
+      email: ['']
     });
 
+  }
+
+  onSubmit() {
+
+    console.warn(this.userForm.value);
   }
 
 }
