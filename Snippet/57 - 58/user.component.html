@@ -14,12 +14,8 @@
             class="form-control"
             id="firstNameId"
             type="text"
-            required
             formControlName="firstName"
           />
-          <span *ngIf="(firstName.dirty || firstName.touched) && firstName.invalid">
-              Nombre requerido.
-               </span>
         </div>
       </div>
 
@@ -32,10 +28,8 @@
             class="form-control"
             id="lastNameId"
             type="text"
-            formControlName="lastName" />
-            <span *ngIf="(lastName.dirty || lastName.touched) && lastName.invalid">
-               Apellido requerido.
-                </span>
+            formControlName="lastName"
+          />
         </div>
       </div>
 
@@ -45,13 +39,9 @@
           <input
             class="form-control"
             id="emailId"
-            type="email"
+            type="text"
             formControlName="email"
-
           />
-          <span *ngIf="(email.dirty || email.touched) && email.invalid">
-            Debe ser un email con el formato correcto.
-            </span>
         </div>
       </div>
 
@@ -63,15 +53,5 @@
         </div>
       </div>
     </form>
-
-    <p>
-        Form Status: {{ userForm.status }}
-
-
-      </p>
-
-       <div *ngIf="userForm.errors?.firstName && (userForm.touched || userForm.dirty)" class="cross-validation-error-message alert alert-danger">
-          Name cannot match alter ego.
-      </div>
   </div>
 </div>
