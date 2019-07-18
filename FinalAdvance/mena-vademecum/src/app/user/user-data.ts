@@ -8,15 +8,15 @@ export class UserData implements InMemoryDbService {
     const users: User[] = [
       {
         'id': 1,
-        'firstName': 'First Name test',
-        'lastName': 'LastName test',
+        'name': 'First Name test',
+        'lastname': 'LastName test',
         'email': 'test@meranini.com'
 
       },
       {
         'id': 2,
-        'firstName': 'First Name test 2',
-        'lastName': 'LastName test 2',
+        'name': 'First Name test 2',
+        'lastname': 'LastName test 2',
         'email': 'test2@meranini.com '
 
       }

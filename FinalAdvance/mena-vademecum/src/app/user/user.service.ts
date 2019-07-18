@@ -5,12 +5,13 @@ import { Observable, of, throwError } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
 
 import { User } from './user';
+import { NewUser } from './newuser';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  private usersUrl = 'api/users';
+  private usersUrl = 'apiRestMenarini/users';
 
   constructor(private http: HttpClient) { }
 
@@ -34,11 +35,11 @@ export class UserService {
       );
   }
 
-  createUser(user: User): Observable<User> {
+  createUser(user: NewUser): Observable<NewUser> {
     console.log("creating user");
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    user.id = null;
-    return this.http.post<User>(this.usersUrl, user, { headers: headers })
+    // user.id = null;
+    return this.http.post<NewUser>(this.usersUrl, user, { headers: headers })
       .pipe(
         tap(data => console.log('createUser: ' + JSON.stringify(data))),
         catchError(this.handleError)
@@ -87,8 +88,8 @@ export class UserService {
     // Return an initialized object
     return {
       id: 0,
-      firstName: '',
-      lastName: '',
+      name: '',
+      lastname: '',
       email: ''
     };
   }

@@ -4,6 +4,7 @@ import { User } from '../user';
 import { UserService } from '../user.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subscription, fromEvent, merge } from 'rxjs';
+import { NewUser } from '../newuser';
 
 @Component({
   selector: 'app-user-edit',
@@ -15,6 +16,7 @@ export class UserEditComponent implements OnInit {
   pageTitle = 'Editar Usuario';
   userForm: FormGroup;
   user: User;
+  newuser: NewUser;
   errorMessage: string;
   private sub: Subscription;
 
@@ -26,8 +28,8 @@ export class UserEditComponent implements OnInit {
   ngOnInit() {
 
     this.userForm = this.fb.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
+      name: ['', Validators.required],
+      lastname: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]]
     });
 
@@ -41,12 +43,12 @@ export class UserEditComponent implements OnInit {
 
   }
 
-  get firstName() {
-    return this.userForm.get('firstName');
+  get name() {
+    return this.userForm.get('name');
   }
 
-  get lastName() {
-    return this.userForm.get('lastName');
+  get lastname() {
+    return this.userForm.get('lastname');
   }
 
   get email() {
@@ -70,13 +72,13 @@ export class UserEditComponent implements OnInit {
     if (this.user.id === 0) {
       this.pageTitle = 'Agregar Usuario';
     } else {
-      this.pageTitle = `Editar Usuario: ${this.user.lastName}`;
+      this.pageTitle = `Editar Usuario: ${this.user.lastname}`;
     }
 
     // Update the data on the form
     this.userForm.patchValue({
-      firstName: this.user.firstName,
-      lastName: this.user.lastName,
+      name: this.user.name,
+      lastname: this.user.lastname,
       email: this.user.email
     });
     // this.userForm.setControl('tags', this.fb.array(this.user.tags || []));
@@ -91,9 +93,10 @@ export class UserEditComponent implements OnInit {
         console.log("userform is dirty");
         const user = { ...this.user, ...this.userForm.value };
         console.log("user.id: " + user.id);
-        if (user.id === undefined) {
+        if (user.id === 0) {
           console.log("new user");
-          this.userService.createUser(user)
+          const newuser = { ...this.newuser, ...this.userForm.value };
+          this.userService.createUser(newuser)
             .subscribe(
               () => this.onSaveComplete(),
               (error: any) => this.errorMessage = <any>error

@@ -22,7 +22,7 @@ import { UserData } from './user/user-data';
     BrowserModule,
     ReactiveFormsModule,
     HttpClientModule,
-    InMemoryWebApiModule.forRoot(UserData),
+    // InMemoryWebApiModule.forRoot(UserData),
     RouterModule.forRoot([
       { path: 'welcome', component: WelcomeComponent },
       { path: 'medicines', loadChildren: './medicines/medicine.module#MedicineModule' },

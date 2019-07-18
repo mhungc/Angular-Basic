@@ -32,7 +32,7 @@ export class UserListComponent implements OnInit {
   performFilter(filterBy: string): User[] {
     filterBy = filterBy.toLocaleLowerCase();
     return this.users.filter((user: User) =>
-      user.firstName.toLocaleLowerCase().indexOf(filterBy) !== -1);
+      user.name.toLocaleLowerCase().indexOf(filterBy) !== -1);
   }
 
   toggleImage(): void {

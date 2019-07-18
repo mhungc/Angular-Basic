@@ -6,19 +6,19 @@
   <div class="card-body">
     <form novalidate (ngSubmit)="onSubmit()" [formGroup]="userForm">
       <div class="form-group row mb-2">
-        <label class="col-md-2 col-form-label" for="firstNameId"
+        <label class="col-md-2 col-form-label" for="nameId"
           >First Name</label
         >
         <div class="col-md-8">
           <input
             class="form-control"
-            id="firstNameId"
+            id="nameId"
             type="text"
             required
-            formControlName="firstName"
+            formControlName="name"
           />
           <span
-            *ngIf="(firstName.dirty || firstName.touched) && firstName.invalid"
+            *ngIf="(name.dirty || name.touched) && name.invalid"
           >
             Nombre requerido.
           </span>
@@ -26,18 +26,18 @@
       </div>
 
       <div class="form-group row mb-2">
-        <label class="col-md-2 col-form-label" for="lastNameId"
+        <label class="col-md-2 col-form-label" for="lastnameId"
           >Last Name</label
         >
         <div class="col-md-8">
           <input
             class="form-control"
-            id="lastNameId"
+            id="lastnameId"
             type="text"
-            formControlName="lastName"
+            formControlName="lastname"
           />
           <span
-            *ngIf="(lastName.dirty || lastName.touched) && lastName.invalid"
+            *ngIf="(lastname.dirty || lastname.touched) && lastname.invalid"
           >
             Apellido requerido.
           </span>
@@ -69,7 +69,7 @@
     </form>
     <p>Form Status: {{ userForm.status }}</p>
 
-    <div *ngIf="userForm.errors?.firstName && (userForm.touched || userForm.dirty)"
+    <div *ngIf="userForm.errors?.name && (userForm.touched || userForm.dirty)"
       class="cross-validation-error-message alert alert-danger">
       Name cannot match alter ego.
     </div>
