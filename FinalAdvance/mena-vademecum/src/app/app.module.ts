@@ -25,7 +25,7 @@ import { UserData } from './user/user-data';
     // InMemoryWebApiModule.forRoot(UserData),
     RouterModule.forRoot([
       { path: 'welcome', component: WelcomeComponent },
-      { path: 'medicines', loadChildren: './medicines/medicine.module#MedicineModule' },
+      { path: 'medicines', canActivate:[AuthGuard], loadChildren: './medicines/medicine.module#MedicineModule' },
       { path : 'user', loadChildren: './user/user.module#UserModule'},
       { path: '', redirectTo: 'welcome', pathMatch: 'full' },
       { path: '**', redirectTo: 'welcome', pathMatch: 'full' }
