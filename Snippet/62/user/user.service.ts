@@ -7,8 +7,6 @@ import { catchError, tap, map } from 'rxjs/operators';
 import { User } from './user';
 import { NewUser } from './newuser';
 
-import { environment } from './../../environments/environment';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -18,7 +16,6 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   getUsers(): Observable<User[]> {
-    console.log("environment: "+environment.production);
     return this.http.get<User[]>(this.usersUrl)
       .pipe(
         tap(data => console.log(JSON.stringify(data))),

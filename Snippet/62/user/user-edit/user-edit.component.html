@@ -1,0 +1,77 @@
+<div class="card">
+  <div class="card-header">
+    Sign Up!
+  </div>
+
+  <div class="card-body">
+    <form novalidate (ngSubmit)="onSubmit()" [formGroup]="userForm">
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label" for="nameId"
+          >First Name</label
+        >
+        <div class="col-md-8">
+          <input
+            class="form-control"
+            id="nameId"
+            type="text"
+            required
+            formControlName="name"
+          />
+          <span
+            *ngIf="(name.dirty || name.touched) && name.invalid"
+          >
+            Nombre requerido.
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label" for="lastnameId"
+          >Last Name</label
+        >
+        <div class="col-md-8">
+          <input
+            class="form-control"
+            id="lastnameId"
+            type="text"
+            formControlName="lastname"
+          />
+          <span
+            *ngIf="(lastname.dirty || lastname.touched) && lastname.invalid"
+          >
+            Apellido requerido.
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label" for="emailId">Email</label>
+        <div class="col-md-8">
+          <input
+            class="form-control"
+            id="emailId"
+            type="email"
+            formControlName="email"
+          />
+          <span *ngIf="(email.dirty || email.touched) && email.invalid">
+            Debe ser un email con el formato correcto.
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <div class="offset-md-2 col-md-4">
+          <button class="btn btn-primary mr-3" type="submit" style="width:80px">
+            Save
+          </button>
+        </div>
+      </div>
+    </form>
+    <p>Form Status: {{ userForm.status }}</p>
+
+    <div *ngIf="userForm.errors?.name && (userForm.touched || userForm.dirty)"
+      class="cross-validation-error-message alert alert-danger">
+      Name cannot match alter ego.
+    </div>
+  </div>
+</div>
