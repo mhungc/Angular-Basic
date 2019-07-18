@@ -8,7 +8,10 @@ import { Component } from '@angular/core';
         <ul class='nav nav-pills'>
           <li><a class='nav-link' routerLinkActive='active' [routerLink]="['/welcome']">Home</a></li>
           <li><a class='nav-link' routerLinkActive='active' [routerLink]="['/medicines']">Medicine List</a></li>
-          <li><a class='nav-link' routerLinkActive='active' [routerLink]="['/user']">Users</a></li>
+          <li><a class='nav-link' routerLinkActive='active' [routerLink]="['/user']">Usuarios</a></li>
+          <li class='nav-item'><a class='nav-link' routerLinkActive='active' [routerLinkActiveOptions]="{exact: true}"
+          [routerLink]="['/users/0/edit']">Agregar Usuario</a>
+    </li>
         </ul>
     </nav>
     <div class='container'>
